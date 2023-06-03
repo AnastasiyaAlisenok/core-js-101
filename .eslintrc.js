@@ -16,5 +16,6 @@ module.exports = {
     ecmaVersion: 2019,
   },
   rules: {
+    "no-restricted-globals": ["error", "event", "fdescribe"]
   },
 };
