@@ -114,7 +114,7 @@ function getLinearEquationRoot(a, b) {
 function getAngleBetweenVectors(x1, y1, x2, y2) {
   const cos = Math.ceil((x1 * x2 + y1 * y2)
   / ((Math.sqrt(x1 ** 2 + y1 ** 2) * Math.sqrt(x2 ** 2 + y2 ** 2))));
-  if (isNaN(cos)) {
+  if (Number.isNaN(cos)) {
     return 3.141592653589793;
   }
   const angle = Math.acos(cos);
@@ -243,7 +243,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   if (value === undefined || value === null) return def;
-  if (typeof value.valueOf() === 'number' || !isNaN(Number(value))) {
+  if (typeof value.valueOf() === 'number' || !Number.isNaN(Number(value))) {
     return Number(value);
   }
   return def;

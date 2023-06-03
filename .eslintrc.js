@@ -13,9 +13,8 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2018,
   },
   rules: {
-    "no-restricted-globals": ["error", "event", "fdescribe"]
   },
 };
