@@ -155,10 +155,10 @@ const cssSelectorBuilder = {
     // return selector1 + combinator + selector2;
   },
 
-  stringify() {
+  /* stringify() {
     throw new Error('Not implemented');
     // return this.selector;
-  },
+  }, */
 };
 
 
