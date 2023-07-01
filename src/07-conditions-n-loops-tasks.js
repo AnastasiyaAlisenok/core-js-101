@@ -132,8 +132,13 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const maxRect1Top = rect1.top + rect1.height;
+  const maxRect1Left = rect1.left + rect1.width;
+  if (maxRect1Top > rect2.top && maxRect1Left >= rect2.left) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -340,8 +345,22 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  if (str.length === 0) {
+    return true;
+  }
+  const arr = str.split('');
+  const brackets = '(){}[]<>';
+  const stack = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    const index = brackets.indexOf(arr[i]);
+    if (index % 2 === 0) {
+      stack.push(index + 1);
+    } else if (stack.pop() !== index) {
+      return false;
+    }
+  }
+  return stack.length === 0;
 }
 
 
@@ -382,8 +401,13 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const matrix = pathes.map((a) => a.split('/'));
+  const el = (i) => (a) => a[i];
+  const path = matrix[0].map((e, i) => matrix.map(el(i)))
+    .filter((a) => a.every((e) => e === a[0])).map(el(0));
+  path.push('');
+  return path.join('/');
 }
 
 
