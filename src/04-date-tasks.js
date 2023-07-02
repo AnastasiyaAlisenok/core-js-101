@@ -145,7 +145,8 @@ function angleBetweenClockHands(date) {
   const hoursAngle = (hours * 30) + (min * 0.5);
   const angleBetween = Math.abs(hoursAngle - minAngle);
   const miniAngle = Math.min(angleBetween, Math.abs(360 - angleBetween));
-  return miniAngle * (Math.PI / 180);
+  const miniAngleRad = miniAngle * (Math.PI / 180);
+  return miniAngleRad;
 }
 
 
