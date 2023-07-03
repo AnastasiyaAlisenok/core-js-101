@@ -139,13 +139,14 @@ function timeSpanToString(startDate, endDate) {
  */
 function angleBetweenClockHands(date) {
   const newDate = new Date(date);
-  const hours = newDate.getHours() - 3;
-  const min = newDate.getMinutes();
+  let hours = newDate.getUTCHours();
+  const min = newDate.getUTCMinutes();
   const minAngle = min * 6;
+  hours = hours > 12 ? hours - 12 : hours;
   const hoursAngle = (hours * 30) + (min * 0.5);
   const angleBetween = Math.abs(hoursAngle - minAngle);
   const miniAngle = Math.min(angleBetween, Math.abs(360 - angleBetween));
-  const miniAngleRad = miniAngle * (3.1415926535897932384 / 180);
+  const miniAngleRad = miniAngle * (Math.PI / 180);
   return miniAngleRad;
 }
 
